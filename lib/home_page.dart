@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/home_page_body.dart';
 import 'package:movies/top_buttons.dart';
 
 import 'app_bar.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget{
       children: <Widget>[
         new CustomAppBar('Movies'),
         new TopButtons(),
-        new MovieColumn(),
+        new HomePageBody(),
       ],
     ),
     );
