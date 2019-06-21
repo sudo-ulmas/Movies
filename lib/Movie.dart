@@ -26,11 +26,11 @@ List<Movie> movies = [
   ),
    const Movie(
     id: "2",
-    title: "Avengers: Endgame",
+    title: "Avengers: Endgameof thores",
     rating: "8.7",
     duration: "2h 56mins",
     premiereDate: "16 May",
-    image: "assets/images/endgame.jpg",
+    image: "assets/images/end.jpg",
   ),
    const Movie(
     id: "3",
@@ -46,7 +46,7 @@ List<Movie> movies = [
     rating: "6.9",
     duration: "1h 47mins",
     premiereDate: "10 May",
-    image: "assets/images/avengement.jpg",
+    image: "assets/images/avenge.jpg",
   ),
    const Movie(
     id: "5",

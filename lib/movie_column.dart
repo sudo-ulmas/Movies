@@ -14,12 +14,15 @@ class MovieColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      final movieThumbnail = new ClipRRect(
-    borderRadius: new BorderRadius.circular(20.0),
-    child: new Image.asset(movie.image),
+       borderRadius: new BorderRadius.circular(20.0),
+       child:SizedBox.expand(
+    
+    child: new Image.asset(movie.image,fit: BoxFit.fill,),
+       ),
   );
 
   final rateBorder = new Container(
-    margin: const EdgeInsets.all(17.5),
+    margin: const EdgeInsets.all(8.5),
     width: 60.0,
     height: 60.0,
     decoration: new BoxDecoration(
@@ -46,11 +49,14 @@ class MovieColumn extends StatelessWidget {
   );
 
   final movieInfo = new Container(
-    margin: new EdgeInsets.all(25.0),
+    margin: new EdgeInsets.all(16.0),
     //constraints: new BoxConstraints.expand(),
     child: new Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        new Row(
+        new Column(
+          children: <Widget>[
+ new Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             new Container(
@@ -99,9 +105,12 @@ class MovieColumn extends StatelessWidget {
             ),
           ],
         ),
-        new Container(
-          height: 220.0,
+          ],
         ),
+       
+       // new Container(
+        //  height: 220.0,
+        //),
         new Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

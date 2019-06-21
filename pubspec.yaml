@@ -37,10 +37,10 @@ flutter:
   assets:
     - assets/images/1.jpg
     - assets/images/venom.jpg
-    - assets/images/endgame.jpg
+    - assets/images/end.jpg
     - assets/images/sicario.jpg
     - assets/images/painandgain.jpg
-    - assets/images/avengement.jpg
+    - assets/images/avenge.jpg
   fonts:
     - family: Raleway
       fonts:
