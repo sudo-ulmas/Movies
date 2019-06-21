@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movies/movie_column.dart';
 
+import 'Movie.dart';
+
+
 class HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,8 +18,8 @@ class HomePageBody extends StatelessWidget {
               sliver: new SliverFixedExtentList(
                 itemExtent: 508.0,
                 delegate: new SliverChildBuilderDelegate(
-                  (context, index) => new MovieColumn(),
-                  childCount: 3,
+                  (context, index) => new MovieColumn(movies[index]),
+                  childCount: movies.length,
                 ),
               ),
             ),

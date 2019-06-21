@@ -2,16 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:movies/text_style.dart';
 
+import 'Movie.dart';
+
+
+
 class MovieColumn extends StatelessWidget {
-  final movieThumbnail = new ClipRRect(
+
+  final Movie movie;
+  MovieColumn(this.movie);
+ 
+  @override
+  Widget build(BuildContext context) {
+     final movieThumbnail = new ClipRRect(
     borderRadius: new BorderRadius.circular(20.0),
-    child: new Image.asset('assets/images/venom.jpg'),
+    child: new Image.asset(movie.image),
   );
 
   final rateBorder = new Container(
     margin: const EdgeInsets.all(17.5),
-    width: 65.0,
-    height: 65.0,
+    width: 60.0,
+    height: 60.0,
     decoration: new BoxDecoration(
       shape: BoxShape.circle,
       border: new Border.all(
@@ -24,7 +34,7 @@ class MovieColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         new Text(
-          '8.5',
+       movie.rating,
           style: new TextStyle(
               fontFamily: 'Roboto',
               fontSize: 17,
@@ -44,8 +54,8 @@ class MovieColumn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             new Container(
-              height: 50.0,
-              width: 50.0,
+              height: 45.0,
+              width: 45.0,
               decoration: new BoxDecoration(
                   color: Colors.white, shape: BoxShape.circle),
             ),
@@ -56,15 +66,17 @@ class MovieColumn extends StatelessWidget {
           height: 40.0,
         ),
         new Container(
+          
+          child: new Align(
           alignment: Alignment.center,
           child: new Text(
-            "Venom",
+            movie.title,
             style: new TextStyle(
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w700,
                 fontSize: 30.0,
                 color: Colors.white),
-          ),
+          ),),
         ),
         new Container(
           height: 15.0,
@@ -73,7 +85,7 @@ class MovieColumn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Text(
-              '1h 30mins',
+              movie.duration,
               style: Style.regularTextStyle,
             ),
             new Container(
@@ -82,7 +94,7 @@ class MovieColumn extends StatelessWidget {
                 width: 0.8,
                 color: new Color(0xeeeeeeee)),
             new Text(
-              '20 Sept',
+              movie.premiereDate,
               style: Style.regularTextStyle,
             ),
           ],
@@ -152,14 +164,12 @@ class MovieColumn extends StatelessWidget {
       ],
     ),
   );
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
     return new Container(
       alignment: Alignment.center,
       margin: new EdgeInsets.fromLTRB(24.0, 16.0, 24.0, 16.0),
       child: new Stack(
         children: <Widget>[
+          
           //margin: new EdgeInsets.all(10),
           movieThumbnail,
           movieInfo,
