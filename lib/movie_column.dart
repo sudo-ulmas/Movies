@@ -13,13 +13,19 @@ class MovieColumn extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-     final movieThumbnail = new ClipRRect(
-       borderRadius: new BorderRadius.circular(20.0),
+     final movieThumbnail = 
+       
+      
+       
+      new ClipRRect(
+        borderRadius: new BorderRadius.circular(20.0),
+       
+       
        child:SizedBox.expand(
     
     child: new Image.asset(movie.image,fit: BoxFit.fill,),
-       ),
-  );
+      
+  ),);
 
   final rateBorder = new Container(
     margin: const EdgeInsets.all(8.5),
@@ -33,6 +39,7 @@ class MovieColumn extends StatelessWidget {
       ),
     ),
     child: Column(
+      
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -176,7 +183,7 @@ class MovieColumn extends StatelessWidget {
   );
     return new Container(
       alignment: Alignment.center,
-      margin: new EdgeInsets.fromLTRB(24.0, 16.0, 24.0, 16.0),
+      margin: new EdgeInsets.fromLTRB(24.0, 10.0, 24.0, 10.0),
       child: new Stack(
         children: <Widget>[
           

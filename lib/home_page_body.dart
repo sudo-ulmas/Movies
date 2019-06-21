@@ -14,9 +14,9 @@ class HomePageBody extends StatelessWidget {
           scrollDirection: Axis.vertical,
           slivers: <Widget>[
             new SliverPadding(
-              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              padding: const EdgeInsets.symmetric(vertical: 0.0),
               sliver: new SliverFixedExtentList(
-                itemExtent: 508.0,
+                itemExtent: 470.0,
                 delegate: new SliverChildBuilderDelegate(
                   (context, index) => new MovieColumn(movies[index]),
                   childCount: movies.length,
