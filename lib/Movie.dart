@@ -26,7 +26,7 @@ List<Movie> movies = [
   ),
    const Movie(
     id: "2",
-    title: "Avengers: Endgameof thores",
+    title: "Avengers: Endgam",
     rating: "8.7",
     duration: "2h 56mins",
     premiereDate: "16 May",

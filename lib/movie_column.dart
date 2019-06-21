@@ -77,6 +77,7 @@ class MovieColumn extends StatelessWidget {
           alignment: Alignment.center,
           child: new Text(
             movie.title,
+            textAlign: TextAlign.center,
             style: new TextStyle(
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w700,
