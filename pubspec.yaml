@@ -37,10 +37,18 @@ flutter:
   assets:
     - assets/images/1.jpg
     - assets/images/venom.jpg
-    - assets/images/end.jpg
+    - assets/images/end.jpeg
     - assets/images/sicario.jpg
-    - assets/images/painandgain.jpg
-    - assets/images/avenge.jpg
+    - assets/images/childs.jpeg
+    - assets/images/lion.jpeg
+    - assets/images/it2.jpeg
+    - assets/images/darkphoenix.jpeg
+    - assets/images/joker.jpeg
+    - assets/images/starwars.png
+    - assets/images/toystory.jpeg
+    - assets/images/end.jpeg
+    - assets/images/lion.jpeg
+    - assets/images/childs.jpeg
   fonts:
     - family: Raleway
       fonts:

@@ -102,7 +102,7 @@ class MovieContainerState extends State<MovieContainer> {
                 ],
               ),
               new Container(
-                height: 40.0,
+                height: 90.0,
               ),
               new Container(
                 child: new Align(
