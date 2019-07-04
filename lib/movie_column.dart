@@ -24,7 +24,7 @@ class MovieContainer extends StatefulWidget {
 }
  
 class MovieContainerState extends State<MovieContainer> {
- static List<String> _liked = List<String>();
+  List<String> _liked = List<String>();
   
   final Movie movie;
   MovieContainerState(this.movie);
@@ -32,7 +32,7 @@ class MovieContainerState extends State<MovieContainer> {
   
   @override
   Widget build(BuildContext context) {
-    final bool _saved=_liked.contains(movie.id);
+      final  bool _saved=_liked.contains(movie.id);
     final movieThumbnail =  new ClipRRect(
       borderRadius: new BorderRadius.circular(20.0),
       child: SizedBox.expand(
@@ -94,7 +94,7 @@ class MovieContainerState extends State<MovieContainer> {
                         color: Colors.white, shape: BoxShape.circle),
                   ),
                   ),
-                  new IconButton(
+                 new IconButton(
                    icon:Icon(
                       Icons.favorite,
                       size: 40.0,
@@ -224,7 +224,7 @@ class MovieContainerState extends State<MovieContainer> {
     );
     return new GestureDetector(
       onTap: ()=>Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => Details(movie)),),
+              MaterialPageRoute(builder: (context) => DetailsPage(movie,_saved)),),
       child: new Container(
        
       alignment: Alignment.center,
