@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:movies/details_page.dart';
 import 'package:movies/text_style.dart';
 
 import 'Movie.dart';
@@ -10,7 +11,8 @@ class MovieColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MovieContainer(movie);
+    return  MovieContainer(movie);
+    
   }
 }
 
@@ -20,26 +22,32 @@ class MovieContainer extends StatefulWidget {
   @override
   MovieContainerState createState() => MovieContainerState(movie);
 }
-final List<String> _liked = List<String>();
+ 
 class MovieContainerState extends State<MovieContainer> {
-  
+ static List<String> _liked = List<String>();
   
   final Movie movie;
   MovieContainerState(this.movie);
+
+  
   @override
   Widget build(BuildContext context) {
     final bool _saved=_liked.contains(movie.id);
-    final movieThumbnail = new ClipRRect(
+    final movieThumbnail =  new ClipRRect(
       borderRadius: new BorderRadius.circular(20.0),
       child: SizedBox.expand(
-        child: new Image.asset(
+        child: new Hero(
+          tag: movie.id,
+          child:new Image.asset(
           movie.image,
           fit: BoxFit.fill,
-        ),
+        ),),
       ),
     );
 
-    final rateBorder = new Container(
+    final rateBorder = new Hero(
+      tag: movie.id+"rate",
+      child:new Container(
       margin: const EdgeInsets.fromLTRB(11, 12.5, 8, 8),
       width: 55.0,
       height: 55.0,
@@ -64,7 +72,7 @@ class MovieContainerState extends State<MovieContainer> {
           )
         ],
       ),
-    );
+    ));
 
     final movieInfo = new Container(
       margin: new EdgeInsets.all(16.0),
@@ -77,11 +85,14 @@ class MovieContainerState extends State<MovieContainer> {
               new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  new Container(
+                  new Hero(
+                    tag: movie.id+"solid",
+                  child:new Container(
                     height: 45.0,
                     width: 45.0,
                     decoration: new BoxDecoration(
                         color: Colors.white, shape: BoxShape.circle),
+                  ),
                   ),
                   new IconButton(
                    icon:Icon(
@@ -107,6 +118,8 @@ class MovieContainerState extends State<MovieContainer> {
               new Container(
                 child: new Align(
                   alignment: Alignment.center,
+                  child:new Hero(
+                    tag: movie.id+"title",
                   child: new Text(
                     movie.title,
                     textAlign: TextAlign.center,
@@ -115,13 +128,15 @@ class MovieContainerState extends State<MovieContainer> {
                         fontWeight: FontWeight.w700,
                         fontSize: 30.0,
                         color: Colors.white),
-                  ),
+                  ),),
                 ),
               ),
               new Container(
                 height: 15.0,
               ),
-              new Row(
+              new Hero(
+                tag: movie.id + "duration",
+             child: new Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   new Text(
@@ -138,7 +153,7 @@ class MovieContainerState extends State<MovieContainer> {
                     style: Style.regularTextStyle,
                   ),
                 ],
-              ),
+              ),),
             ],
           ),
 
@@ -207,7 +222,11 @@ class MovieContainerState extends State<MovieContainer> {
         ],
       ),
     );
-    return new Container(
+    return new GestureDetector(
+      onTap: ()=>Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => Details(movie)),),
+      child: new Container(
+       
       alignment: Alignment.center,
       margin: new EdgeInsets.fromLTRB(24.0, 10.0, 24.0, 10.0),
       child: new Stack(
@@ -218,6 +237,7 @@ class MovieContainerState extends State<MovieContainer> {
           rateBorder,
         ],
       ),
+    ),
     );
   }
 }

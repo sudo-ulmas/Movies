@@ -4,15 +4,12 @@ import 'Movie.dart';
 import 'app_bar.dart';
 import 'movie_column.dart';
 
-
-
-class HomePage extends StatelessWidget{
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return HomePages();
   }
-
 }
 
 class HomePages extends StatefulWidget {
@@ -36,27 +33,26 @@ class HomePagesState extends State<HomePages> {
   bool _nowShowing = true;
   bool _comingSoon = false;
 
-  
-
   @override
   Widget build(BuildContext context) {
     changeButtonColor() {
-    setState(() {
+      setState(() {
         _nowShowing = !_nowShowing;
-    _comingSoon = !_comingSoon;
+        _comingSoon = !_comingSoon;
       });
-  }
+    }
+
     void nowShowing() {
-      if(!_nowShowing){
-      changeButtonColor();
-      goToPage(0);
+      if (!_nowShowing) {
+        changeButtonColor();
+        goToPage(0);
       }
     }
 
     void comingSoon() {
-      if(!_comingSoon){
-      goToPage(1);
-      changeButtonColor();
+      if (!_comingSoon) {
+        goToPage(1);
+        changeButtonColor();
       }
     }
 
@@ -74,13 +70,15 @@ class HomePagesState extends State<HomePages> {
                 Expanded(
                   child: ButtonTheme(
                     minWidth: 162.0,
-                    buttonColor: _nowShowing ? Color.fromARGB(240, 246, 166, 19) : const Color(0xe9e9e9e9),
+                    buttonColor: _nowShowing
+                        ? Color.fromARGB(240, 246, 166, 19)
+                        : const Color(0xe9e9e9e9),
                     child: RaisedButton(
                       elevation: _nowShowing ? 10.0 : 0.0,
                       //disabledElevation: 15.0,
                       child: new Text('Now Showing',
                           style: new TextStyle(
-                            color: _nowShowing?Colors.white : Colors.grey,
+                            color: _nowShowing ? Colors.white : Colors.grey,
                             fontFamily: 'Roboto',
                           )),
                       onPressed: () => nowShowing(),
@@ -117,7 +115,7 @@ class HomePagesState extends State<HomePages> {
             //width: double.infinity,
             height: MediaQuery.of(context).size.height - 148,
             child: PageView(
-           physics: new NeverScrollableScrollPhysics(),
+              physics: new NeverScrollableScrollPhysics(),
               controller: pageController,
               children: <Widget>[
                 // new Expanded(
