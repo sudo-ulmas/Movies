@@ -45,9 +45,9 @@ class MovieContainerState extends State<MovieContainer> {
       ),
     );
 
-    final rateBorder = new Hero(
-      tag: movie.id+"rate",
-      child:new Container(
+    final rateBorder=
+      
+      new Container(
       margin: const EdgeInsets.fromLTRB(11, 12.5, 8, 8),
       width: 55.0,
       height: 55.0,
@@ -72,7 +72,7 @@ class MovieContainerState extends State<MovieContainer> {
           )
         ],
       ),
-    ));
+    );
 
     final movieInfo = new Container(
       margin: new EdgeInsets.all(16.0),
@@ -85,15 +85,15 @@ class MovieContainerState extends State<MovieContainer> {
               new Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  new Hero(
-                    tag: movie.id+"solid",
-                  child:new Container(
+                 
+                    
+                  new Container(
                     height: 45.0,
                     width: 45.0,
                     decoration: new BoxDecoration(
                         color: Colors.white, shape: BoxShape.circle),
                   ),
-                  ),
+                  
                  new IconButton(
                    icon:Icon(
                       Icons.favorite,
@@ -118,8 +118,7 @@ class MovieContainerState extends State<MovieContainer> {
               new Container(
                 child: new Align(
                   alignment: Alignment.center,
-                  child:new Hero(
-                    tag: movie.id+"title",
+                  
                   child: new Text(
                     movie.title,
                     textAlign: TextAlign.center,
@@ -130,13 +129,13 @@ class MovieContainerState extends State<MovieContainer> {
                         color: Colors.white),
                   ),),
                 ),
-              ),
+             
               new Container(
                 height: 15.0,
               ),
-              new Hero(
-                tag: movie.id + "duration",
-             child: new Row(
+              
+                
+             new Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   new Text(
@@ -153,7 +152,7 @@ class MovieContainerState extends State<MovieContainer> {
                     style: Style.regularTextStyle,
                   ),
                 ],
-              ),),
+              ),
             ],
           ),
 
