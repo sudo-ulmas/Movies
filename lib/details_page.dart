@@ -20,23 +20,26 @@ class DetailsPageState extends State<DetailsPage>
   final Movie movie;
   final bool _saved;
   DetailsPageState(this.movie, this._saved);
-  String _description="Journalist Eddie Brock is trying to take down Carlton Drake, the notorious and brilliant founder of the Life Foundation. While investigating one of Drake's experiments, Eddie's body merges with the alien Venom -- leaving him with superhuman strength and power. Twisted, dark and fueled by rage, Venom tries to control the new and dangerous abilities that Eddie finds so intoxicating";
+  String _description =
+      "Journalist Eddie Brock is trying to take down Carlton Drake, the notorious and brilliant founder of the Life Foundation. While investigating one of Drake's experiments, Eddie's body merges with the alien Venom -- leaving him with superhuman strength and power. Twisted, dark and fueled by rage, Venom tries to control the new and dangerous abilities that Eddie finds so intoxicating";
   String _firstHalf;
 
   bool _isPlaying = false;
   bool _vidPlaying = false;
-  bool _isTextExpanded=false;
+  bool _isTextExpanded = false;
   VideoPlayerController playerController;
   AnimationController _controller;
   Animation _animation;
-
+GlobalKey _keySynopsis=GlobalKey();
   Duration _position;
   bool _visible;
   bool _isDisabled;
   
+
+  
+
   @override
   void initState() {
-    
     
     _isDisabled = false;
     _visible = true;
@@ -48,8 +51,6 @@ class DetailsPageState extends State<DetailsPage>
       begin: 0.0,
       end: 1.0,
     ).animate(_controller);
-    
-    
 
     if (playerController == null) {
       playerController = VideoPlayerController.asset('assets/videos/venom.mp4')
@@ -59,24 +60,20 @@ class DetailsPageState extends State<DetailsPage>
               _position = playerController.value.position;
             });
           });
-          setState(() {
-            
-          });
+          setState(() {});
         })
         ..setVolume(1.0)
         ..initialize();
     }
     super.initState();
   }
-
+    
   @override
   void deactivate() {
-   
     super.deactivate();
     playerController.setVolume(0.0);
 
     playerController.dispose();
-    
   }
 
   @override
@@ -88,34 +85,131 @@ class DetailsPageState extends State<DetailsPage>
 
   @override
   Widget build(BuildContext context) {
-if(_description.length> 50){
-      _firstHalf=_description.substring(0,50);
-     
+    
+    if (_description.length > 175) {
+      _firstHalf = _description.substring(0, 175);
+    } else {
+      _firstHalf = _description;
     }
-    else{
-      _firstHalf=_description;
+    ListView _synopsis(){
       
-    }
-final _synopsis= new Container(
-      padding: new EdgeInsets.all(15.0),
-    child:new Column(
-      children: <Widget>[
-         new Text(_isTextExpanded ? _description : _firstHalf),
+     
+      return new ListView(
+        children: <Widget>[
+          Container(
          
-        new Row(
-           mainAxisAlignment: MainAxisAlignment.start,
-           children: <Widget>[
-             new IconButton(icon: new Icon(_isTextExpanded ? Icons.expand_less : Icons.expand_more,), onPressed: () { setState(() {
-             _isTextExpanded=!_isTextExpanded;
-           });},)
-           ],
            
-         ),
-        
-         
-      ],
-    )
-  );
+        key: _keySynopsis,
+        padding: new EdgeInsets.fromLTRB(20, 270.0, 20, 0),
+       
+        child: new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+       new Container(padding: new EdgeInsets.fromLTRB(0, 0, 0,13),child:  new Text("Synopsis",style: new TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  color: Colors.black,
+                )),alignment: Alignment.centerLeft,),
+        new Text(_isTextExpanded ? _description : _firstHalf,style: new TextStyle(
+          fontFamily: 'Roboto',
+          fontWeight: FontWeight.w500,
+          fontSize: 13,
+          color: Colors.black54
+        ),),
+     
+            new IconButton(
+              color: Colors.black26,
+              padding: const EdgeInsets.all(0.0),
+              alignment: Alignment.topLeft,
+             // iconSize: 1.0,
+              icon: new Icon(
+                
+                _isTextExpanded ? Icons.expand_less : Icons.expand_more,
+                size:30,
+              ),
+              onPressed: () {
+                setState(() {
+                   
+                  _isTextExpanded = !_isTextExpanded;
+                });
+              },
+            )
+            
+          ],
+    
+    ),
+          ),
+  new Container(
+      
+    // margin: new EdgeInsets.only(top: 0),
+       padding: new EdgeInsets.fromLTRB(20, 20, 0, 0),
+       color: Colors.black12,
+       child: SizedBox(
+       width: MediaQuery.of(context).size.width,
+       height: 180,
+       
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            new Text("Cast",style: new TextStyle(
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  color: Colors.black,
+                ),),
+           new SizedBox(
+             width: MediaQuery.of(context).size.width,
+       height: 160,
+             child:  ListView(
+        padding: new EdgeInsets.fromLTRB(0, 5, 5, 5),
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+Container(
+  
+  margin: new EdgeInsets.fromLTRB(0, 0, 10, 10),
+  child: new ClipRRect(
+    borderRadius: new BorderRadius.circular(5),
+  child: Image.asset('assets/images/tomHardy.jpg'),
+    
+  ),
+    ),
+    Container(
+      margin: new EdgeInsets.fromLTRB(0, 0, 10, 10),
+      child: new ClipRRect(
+    borderRadius: new BorderRadius.circular(5),
+     child: Image.asset('assets/images/michaelWilliams.jpg'),
+    ),),
+    Container(
+      margin: new EdgeInsets.fromLTRB(0, 0, 10, 10),
+      child: new ClipRRect(
+    borderRadius: new BorderRadius.circular(5),
+      child: Image.asset('assets/images/woodyHarelson.jpg'),
+    ),),
+    Container(
+       margin: new EdgeInsets.fromLTRB(0, 0, 10, 10),
+       child: new ClipRRect(
+    borderRadius: new BorderRadius.circular(5),
+     child: Image.asset('assets/images/rizAhmed.jpeg'),
+    ),),
+     Container(
+       margin: new EdgeInsets.fromLTRB(0, 0, 10, 10),
+       child: new ClipRRect(
+    borderRadius: new BorderRadius.circular(5),
+     child: Image.asset('assets/images/jennySlate.jpeg'),
+    ),),
+        ],
+      ),
+           )
+          ],
+        )
+     ),
+  )
+        ],
+      ); 
+    }
+
+  
 
     final play = new FloatingActionButton(
       backgroundColor: Colors.white30,
@@ -124,16 +218,14 @@ final _synopsis= new Container(
         color: Colors.white54,
         size: 45,
       ),
-      onPressed:(){
-        if(!_isDisabled){
+      onPressed: () {
+        if (!_isDisabled) {
           setState(() {
-                playerController.play();
-                _isPlaying = true;
-              });
-        }else{
-          
-             null; 
-           
+            playerController.play();
+            _isPlaying = true;
+          });
+        } else {
+          null;
         }
       },
     );
@@ -155,13 +247,17 @@ final _synopsis= new Container(
     );
 
     final thumbnail = new Align(
+      
       alignment: Alignment.topCenter,
       child: new FractionallySizedBox(
+        
           heightFactor: 0.40,
           widthFactor: 1.0,
           child: new Hero(
+            
             tag: movie.id,
             child: new Image.asset(
+              
               movie.image,
               fit: BoxFit.fill,
             ),
@@ -169,9 +265,11 @@ final _synopsis= new Container(
     );
 
     final movieInfo = new Container(
+      
       margin: new EdgeInsets.fromLTRB(16, 20, 16, 16),
       //constraints: new BoxConstraints.expand(),
       child: new Column(
+        
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           new Row(
@@ -209,6 +307,7 @@ final _synopsis= new Container(
             height: 25.0,
           ),
           new Center(
+            
             child: new FloatingActionButton(
               backgroundColor: Colors.white30,
               child: Icon(
@@ -232,6 +331,7 @@ final _synopsis= new Container(
           ),
 
           Container(
+            
             child: new Align(
               alignment: Alignment.topLeft,
               child: new Text(
@@ -446,19 +546,53 @@ final _synopsis= new Container(
         ),
       ],
     ));
+Widget _videoPlayer(){
+      return (_vidPlaying
+                ? video
+                : new Stack(
+                    children: <Widget>[thumbnail, movieInfo, rateBorder],
+                  ));
+    }
+
+
+Container _bookButton(){
+  return new Container(
+    width: double.infinity,
+    height: 40.0,
+    margin: new EdgeInsets.only(top: MediaQuery.of(context).size.height-40),
+child:new ButtonTheme(
+                // minWidth: 40.0,
+                buttonColor: Color.fromARGB(250, 246, 166, 19), child:new RaisedButton(onPressed: () {},child: new Text('Book Now',style: new TextStyle(
+                  fontFamily: 'Roboto',
+                  color: Colors.white,
+fontWeight: FontWeight.w700,
+fontSize: 15.0
+                ),),),
+  ));
+}
 
     return new Scaffold(
         body: new Container(
-            child: (_vidPlaying
-                ? video
-                : new Stack(
-                   children: <Widget>[thumbnail, movieInfo, rateBorder],
-                  ))),
-                 
-         
-        );
+      constraints: new BoxConstraints.expand(),
+      color: Colors.white,
+      child: new Stack(
+        children: <Widget>[
+          
+           _synopsis(),
+          _videoPlayer(),
+         _bookButton(),
+          
+        ],
+      ),
+    ));
+    
+    
+    
+    
+    
+    
+    
+    
+   
   }
-
-  
-
 }
