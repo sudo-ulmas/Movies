@@ -20,9 +20,9 @@ class DetailsPageState extends State<DetailsPage>
   final Movie movie;
   final bool _saved;
   DetailsPageState(this.movie, this._saved);
-  String _description =
-      "Journalist Eddie Brock is trying to take down Carlton Drake, the notorious and brilliant founder of the Life Foundation. While investigating one of Drake's experiments, Eddie's body merges with the alien Venom -- leaving him with superhuman strength and power. Twisted, dark and fueled by rage, Venom tries to control the new and dangerous abilities that Eddie finds so intoxicating";
-  String _firstHalf;
+  
+      
+  
 
   bool _isPlaying = false;
   bool _vidPlaying = false;
@@ -85,7 +85,8 @@ GlobalKey _keySynopsis=GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    
+    String _description =movie.overview;
+    String _firstHalf;
     if (_description.length > 175) {
       _firstHalf = _description.substring(0, 175);
     } else {
@@ -256,7 +257,7 @@ Container(
           child: new Hero(
             
             tag: movie.id,
-            child: new Image.asset(
+            child: new Image.network(
               
               movie.image,
               fit: BoxFit.fill,
@@ -355,7 +356,7 @@ Container(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               new Text(
-                movie.duration,
+                movie.duration.toString(),
                 style: Style.regularTextStyle,
               ),
               new Container(
@@ -437,7 +438,7 @@ Container(
         children: <Widget>[
           new Material(
             child: new Text(
-              movie.rating,
+              movie.rating.toString(),
               style: new TextStyle(
                   fontFamily: 'Roboto',
                   fontSize: 14,

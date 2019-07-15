@@ -155,7 +155,7 @@ class HomePagesState extends State<HomePages> {
                             delegate: new SliverChildBuilderDelegate(
                               (context, index) =>
                                   new MovieColumn(coming_movies[index]),
-                              childCount: movies.length,
+                              childCount: coming_movies.length,
                             ),
                           ),
                         ),

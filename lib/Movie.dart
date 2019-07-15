@@ -1,30 +1,34 @@
 class Movie {
-  final String id;
+  final int id;
   final String title;
-  final String rating;
-  final String duration;
+  final String overview;
+  final num rating;
+  final int duration;
   final String premiereDate;
   final String image;
 
   const Movie(
       {this.id,
+      this.overview,
       this.title,
       this.rating,
       this.duration,
       this.premiereDate,
       this.image});
+
+      
 }
 
 List<Movie> movies = [
   const Movie(
-    id: "1",
+    id: 1,
     title: "Venom",
-    rating: "8.5",
-    duration: "1h 30mins",
+    rating: 8.5,
+    duration: 130,
     premiereDate: "20 Sept",
     image: "assets/images/venom.jpg",
   ),
-   const Movie(
+   /*const Movie(
     id: "2",
     title: "Avengers: Endgame",
     rating: "8.7",
@@ -55,20 +59,20 @@ List<Movie> movies = [
     duration: "2hours",
     premiereDate: "19 June",
     image: "assets/images/childs.jpeg",
-  ),
+   ),*/
 ];
 
 
 List<Movie> coming_movies = [
   const Movie(
-    id: "1",
+    id: 1,
     title: "Toy Story 4",
-    rating: "8.5",
-    duration: "1h 40mins",
+    rating: 8.5,
+    duration: 140,
     premiereDate: "21 June",
     image: "assets/images/toystory.jpeg",
   ),
-   const Movie(
+  /* const Movie(
     id: "2",
     title: "Dark Phoenix",
     rating: "6.1",
@@ -99,5 +103,5 @@ List<Movie> coming_movies = [
     duration: "2 hours",
     premiereDate: "3 Oct",
     image: "assets/images/joker.jpeg",
-  ),
+  ),*/
 ];

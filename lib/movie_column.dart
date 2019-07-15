@@ -38,7 +38,7 @@ class MovieContainerState extends State<MovieContainer> {
       child: SizedBox.expand(
         child: new Hero(
           tag: movie.id,
-          child:new Image.asset(
+          child:new Image.network(
           movie.image,
           fit: BoxFit.fill,
         ),),
@@ -63,7 +63,7 @@ class MovieContainerState extends State<MovieContainer> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           new Text(
-            movie.rating,
+            movie.rating.toString(),
             style: new TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 17,
@@ -102,10 +102,10 @@ class MovieContainerState extends State<MovieContainer> {
                     ), 
                     onPressed: (){
                       setState(() {
-                        if(_liked.contains(movie.id)){
-                          _liked.remove(movie.id);
+                        if(_liked.contains(movie.id.toString())){
+                          _liked.remove(movie.id.toString());
                         }else{
-                          _liked.add(movie.id);
+                          _liked.add(movie.id.toString());
                         }
                       });
                     }),
@@ -139,7 +139,7 @@ class MovieContainerState extends State<MovieContainer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   new Text(
-                    movie.duration,
+                    movie.duration.toString(),
                     style: Style.regularTextStyle,
                   ),
                   new Container(
