@@ -40,25 +40,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/1.jpg
-    - assets/images/venom.jpg
-    - assets/images/end.jpeg
-    - assets/images/sicario.jpg
-    - assets/images/childs.jpeg
-    - assets/images/lion.jpeg
-    - assets/images/it2.jpeg
-    - assets/images/darkphoenix.jpeg
-    - assets/images/joker.jpeg
-    - assets/images/starwars.png
-    - assets/images/toystory.jpeg
-    - assets/images/end.jpeg
-    - assets/images/lion.jpeg
-    - assets/images/childs.jpeg
-    - assets/images/jennySlate.jpeg
-    - assets/images/michaelWilliams.jpg
-    - assets/images/rizAhmed.jpeg
-    - assets/images/tomHardy.jpg
-    - assets/images/woodyHarelson.jpg
-    - assets/videos/venom.mp4
+ 
   fonts:
     - family: Raleway
       fonts:
