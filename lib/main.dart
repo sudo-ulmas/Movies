@@ -10,7 +10,9 @@ import 'package:http/http.dart' as http;
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  
   runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: 'Movie App',
     theme: ThemeData(
       fontFamily: 'RaleWay',
@@ -42,6 +44,7 @@ class MoviesDataState extends State<MoviesData> {
 
   @override
   Widget build(BuildContext context) {
+    
     return new HomePage();
   }
 }

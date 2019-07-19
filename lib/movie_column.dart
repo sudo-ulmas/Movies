@@ -24,7 +24,7 @@ class MovieContainer extends StatefulWidget {
 }
  
 class MovieContainerState extends State<MovieContainer> {
-  List<String> _liked = List<String>();
+  List<int> _liked = List<int>();
   
   final Movie movie;
   MovieContainerState(this.movie);
@@ -98,14 +98,14 @@ class MovieContainerState extends State<MovieContainer> {
                    icon:Icon(
                       Icons.favorite,
                       size: 40.0,
-                      color: _saved ? Colors.red :new Color(0xe9e9e9e9),
+                      color: _liked.contains(movie.id) ? Colors.red :new Color(0xe9e9e9e9),
                     ), 
                     onPressed: (){
                       setState(() {
-                        if(_liked.contains(movie.id.toString())){
-                          _liked.remove(movie.id.toString());
+                        if(_liked.contains(movie.id)){
+                          _liked.remove(movie.id);
                         }else{
-                          _liked.add(movie.id.toString());
+                          _liked.add(movie.id);
                         }
                       });
                     }),
@@ -223,7 +223,7 @@ class MovieContainerState extends State<MovieContainer> {
     );
     return new GestureDetector(
       onTap: ()=>Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => DetailsPage(movie,_saved)),),
+              MaterialPageRoute(builder: (context) => DetailsPage(movie)),),
       child: new Container(
        
       alignment: Alignment.center,

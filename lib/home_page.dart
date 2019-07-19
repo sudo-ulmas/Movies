@@ -24,8 +24,8 @@ class HomePagesState extends State<HomePages> {
     initialPage: 0,
   );
 final String nowPlayingUrl =
-      "http://api.themoviedb.org/3/movie/now_playing?api_key=8eb52f388e530e8db4443ca665ac6383";
-  final String comingSoonUrl="https://api.themoviedb.org/3/discover/movie?api_key=8eb52f388e530e8db4443ca665ac6383&language=en-US&sort_by=release_date.asc&include_adult=false&include_video=false&page=1&primary_release_year=2019&primary_release_date.gte=2019-07-15&primary_release_date.lte=2019-09-15&year=2019";
+      "http://api.themoviedb.org/3/movie/now_playing?api_key=8eb52f388e530e8db4443ca665ac6383&region=RU";
+  final String comingSoonUrl="https://api.themoviedb.org/3/discover/movie?api_key=8eb52f388e530e8db4443ca665ac6383&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&primary_release_year=2019&primary_release_date.gte=2019-07-15&primary_release_date.lte=2019-08-15&year=2019";
   List data;
   List pata;
   Future<List<Movie>> updateMovies() async {
@@ -37,13 +37,60 @@ final String nowPlayingUrl =
       var jSon = json.decode(response.body);
       data = jSon["results"];
       for (int i = 0; i < data.length; i++) {
+        String releaseDate;
+        String month=data[i]["release_date"].toString().substring(5,7);
+        String day=data[i]["release_date"].toString().substring(8,10);
+        if(day.startsWith('0')){
+          day=day.substring(1);
+        }
+        switch(month){
+         case '01':
+          releaseDate=day + " Jan";
+          break;
+          case '02':
+          releaseDate=day + " Feb";
+          break;
+          case '03':
+          releaseDate=day + " March";
+          break;
+          case '04':
+          releaseDate=day + " April";
+          break;
+          case '05':
+          releaseDate=day + " May";
+          break;
+          case '06':
+          releaseDate=day + " June";
+          break;
+          case '07':
+          releaseDate=day + " July";
+          break;
+          case '08':
+          releaseDate=day + " Aug";
+          break;
+          case '09':
+          releaseDate=day + " Sep";
+          break;
+          case '10':
+          releaseDate=day + " Oct";
+          break;
+          case '11':
+          releaseDate=day + " Nov";
+          break;
+          case '12':
+          releaseDate=day + " Dec";
+          break;
+          default:
+          releaseDate=month;
+          break;
+        }
         Movie m = new Movie(
           id: data[i]["id"],
           overview: data[i]["overview"],
           title: data[i]["title"],
           rating: data[i]["vote_average"],
           duration: data[i]["id"],
-          premiereDate: data[i]["release_date"],
+          premiereDate: releaseDate,
           image: "https://image.tmdb.org/t/p/w500" + data[i]["poster_path"],
         );
         movies.add(m);
